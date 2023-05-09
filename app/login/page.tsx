@@ -17,10 +17,11 @@ export default function Login() {
           </a>
           <h3 className="text-xl font-semibold">Sign In</h3>
           <p className="text-sm text-gray-500">
-            Use your email and password to sign in
+          Virtual Interviewer leveraging ChatGPT
           </p>
         </div>
         <Form type="login" />
+
       </div>
     </div>
   );

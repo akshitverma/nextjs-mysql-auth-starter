@@ -10,12 +10,19 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Link from "next/link";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ResponsiveAppBar from "@/components/ResponsiveAppBar";
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Hi there! How can I help?" },
+    { role: "assistant", content: "Can you explain the difference between atomic and nonatomic properties? What is the default for synthesized properties?" },
   ]);
 
   const messageListRef = useRef<HTMLDivElement>(null);
@@ -110,12 +117,35 @@ useEffect(() => {
     },
   });
 
+  const styleTextArea = {
+    maxHeight:'75px',
+    minHeight:'38px',
+      resize:'none',
+      padding:'9px',
+      boxSizing:'border-box',
+      fontSize:'15px'};
+
   return (
       <ThemeProvider theme={theme} 
       >
       {/* <CssBaseline /> */}
       <ResponsiveAppBar />
+      <Box
+      sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+          }}
+        >
+          <Container maxWidth="sm">
+            <Typography variant="h5" align="left" color="text.secondary" paragraph>
+              Module Lead
+            </Typography>
+          </Container>
+        </Box>
       <main className={styles.main}>
+      
+
         <div className={styles.cloud}>
           <div ref={messageListRef} className={styles.messagelist}>
             {messages.map((message, index) => {
@@ -167,7 +197,9 @@ useEffect(() => {
         <div className={styles.center}>
           <div className={styles.cloudform}>
             <form onSubmit={handleSubmit}>
+              
               <textarea
+                style={ {minHeight:'100px'} }
                 disabled={loading}
                 onKeyDown={handleEnter}
                 ref={textAreaRef}
@@ -178,13 +210,13 @@ useEffect(() => {
                 id="userInput"
                 name="userInput"
                 placeholder={
-                  loading ? "Waiting for response..." : "Type your question..."
+                  loading ? "Waiting for response..." : "Type your answer"
                 }
                 value={userInput}
                 onChange={(e) => setUserInput(e.target.value)}
                 className={styles.textarea}
               />
-              <button
+              {/* <button
                 type="submit"
                 disabled={loading}
                 className={styles.generatebutton}
@@ -203,11 +235,11 @@ useEffect(() => {
                     <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                   </svg>
                 )}
-              </button>
+              </button> */}
             </form>
           </div>
           <div className={styles.footer}>
-            
+          <Button variant="outlined">Submit Response</Button>
           </div>
         </div>
       </main>

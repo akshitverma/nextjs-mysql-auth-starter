@@ -160,7 +160,7 @@
     padding: 1.5rem;
     color: #000000;
     animation: fadein 0.5s;
-    border: 1px solid #30373d;
+    border: 0px solid #30373d;
   }
   
   @keyframes fadein {
@@ -216,7 +216,6 @@
   
   .cloud {
     width: 75vw;
-    height: 65vh;
     background: #ededed;
     border-radius: 0.5rem;
     border: 0px solid #30373d;

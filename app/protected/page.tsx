@@ -56,6 +56,8 @@ import SingleFileUploadForm from "@/components/SingleFileUploadForm";
 import { getSession } from 'next-auth/react';
 import { useRouter } from "next/navigation";
 import { useSession, signIn, signOut } from "next-auth/react";
+import ReactMarkdown from "react-markdown";
+import styles from "@/styles/Home.module.css";
 
 
 function Copyright() {
@@ -231,9 +233,13 @@ export default function Album() {
         <Typography variant="inherit" align="left" color="text.secondary" paragraph>
             { card.brief_description }
         </Typography>
-        <Typography variant="h6" align="left" color="text.primary" paragraph>
+        {/* <Typography variant="h6" align="left" color="text.primary" paragraph> */}
+        <div className={styles.markdownanswer}>
+            <ReactMarkdown linkTarget={"_blank"}>
             { card.full_description }
-        </Typography>
+                    </ReactMarkdown>
+                    </div>
+        {/* </Typography> */}
           <Typography variant="h6" align="center" gutterBottom>
          .
            </Typography>

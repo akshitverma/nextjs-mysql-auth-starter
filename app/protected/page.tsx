@@ -91,11 +91,13 @@ export default function Album() {
   console.log("hello");
   
   const [jobs, setJobs] = React.useState(cards);
-  // const [ session ] = useSession();
+  const { data: session, status } = useSession();
+
+  console.log(session);
 
   const callAPI = async () => {
 		try {
-			const res = await fetch('https://ankitkf.ngrok.io/job_positions/', {
+      const res = await fetch(process.env.BASE_URL + '/job_positions/', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -115,7 +117,7 @@ export default function Album() {
 
   const callStartInterviewAPI = async (jobId: string) => {
 		try {
-			const res = await fetch('https://ankitkf.ngrok.io/interviews/start/', {
+			const res = await fetch(process.env.BASE_URL + '/interviews/start/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
